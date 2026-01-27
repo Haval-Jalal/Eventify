@@ -1,7 +1,9 @@
 USE Eventify;
 
+
+
 CREATE TABLE Customers (
-    CustomerID INT IDENTITY PRIMARY KEY,
+    CustomerID INT IDENTITY(1,1) PRIMARY KEY,
     FirstName NVARCHAR(50) NOT NULL,
     LastName NVARCHAR(50) NOT NULL,
     Email NVARCHAR(100) NOT NULL UNIQUE,
@@ -11,7 +13,7 @@ CREATE TABLE Customers (
 
 
 CREATE TABLE Venues (
-    VenueID INT IDENTITY PRIMARY KEY,
+    VenueID INT IDENTITY(1,1) PRIMARY KEY,
     Name NVARCHAR(100) NOT NULL UNIQUE,
     City NVARCHAR(50) NOT NULL,
     Capacity INT NOT NULL CHECK (Capacity > 0)
@@ -19,7 +21,7 @@ CREATE TABLE Venues (
 
 
 CREATE TABLE Events (
-    EventID INT IDENTITY PRIMARY KEY,
+    EventID INT IDENTITY(1,1) PRIMARY KEY,
     Title NVARCHAR(100) NOT NULL,
     EventDate DATETIME NOT NULL,
     VenueID INT NOT NULL,
@@ -32,7 +34,7 @@ CREATE TABLE Events (
 
 
 CREATE TABLE Orders (
-    OrderID INT IDENTITY PRIMARY KEY,
+    OrderID INT IDENTITY(1,1) PRIMARY KEY,
     CustomerID INT NOT NULL,
     OrderDate DATETIME NOT NULL DEFAULT GETDATE(),
     Status NVARCHAR(20) NOT NULL CHECK (Status IN ('Pending','Paid','Cancelled')),
@@ -43,7 +45,7 @@ CREATE TABLE Orders (
 
 
 CREATE TABLE Tickets (
-    TicketID INT IDENTITY PRIMARY KEY,
+    TicketID INT IDENTITY(1,1) PRIMARY KEY,
     EventID INT NOT NULL,
     SeatNumber NVARCHAR(10) NOT NULL,
 
@@ -56,7 +58,7 @@ CREATE TABLE Tickets (
 
 
 CREATE TABLE Payments (
-    PaymentID INT IDENTITY PRIMARY KEY,
+    PaymentID INT IDENTITY(1,1) PRIMARY KEY,
     OrderID INT NOT NULL,
     Amount DECIMAL(10,2) NOT NULL CHECK (Amount >= 0),
     PaymentDate DATETIME NOT NULL DEFAULT GETDATE(),
@@ -68,7 +70,7 @@ CREATE TABLE Payments (
 
 
 CREATE TABLE OrderRows (
-    OrderRowID INT IDENTITY PRIMARY KEY,
+    OrderRowID INT IDENTITY(1,1) PRIMARY KEY,
     OrderID INT NOT NULL,
     TicketID INT NOT NULL,
     PriceAtPurchase DECIMAL(10,2) NOT NULL CHECK (PriceAtPurchase >= 0),
