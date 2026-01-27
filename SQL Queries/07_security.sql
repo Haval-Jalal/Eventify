@@ -1,3 +1,6 @@
+USE Eventify;
+GO
+
 CREATE ROLE EventifyReader;
 GO
 
