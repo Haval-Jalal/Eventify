@@ -1,3 +1,5 @@
+USE Eventify;
+
 -- CRUD Customers
 
 INSERT INTO Customers (FirstName, LastName, Email, Phone)
