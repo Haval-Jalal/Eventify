@@ -1,1 +1,12 @@
+IF EXISTS (SELECT name FROM sys.databases WHERE name = 'Eventify')
+BEGIN
+    ALTER DATABASE Eventify SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+    DROP DATABASE Eventify;
+END
+GO
+
 CREATE DATABASE Eventify;
+GO
+
+USE Eventify;
+GO
