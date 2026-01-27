@@ -1,3 +1,5 @@
+USE Eventify;
+
 -- Query 1 – Alla ordrar med kundinfo (JOIN)
 
 SELECT 

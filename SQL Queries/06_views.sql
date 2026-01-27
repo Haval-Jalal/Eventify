@@ -1,3 +1,6 @@
+USE Eventify;
+GO
+
 CREATE VIEW vw_PublicCustomers AS
 SELECT 
     CustomerID,
