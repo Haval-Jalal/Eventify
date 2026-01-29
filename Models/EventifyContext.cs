@@ -35,15 +35,15 @@ public partial class EventifyContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=DESKTOP-NUMA912\\SQLEXPRESS;Database=Eventify;Trusted_Connection=True;TrustServerCertificate=True;");
+        => optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=Eventify;Trusted_Connection=True;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Customer>(entity =>
         {
-            entity.HasKey(e => e.CustomerId).HasName("PK__Customer__A4AE64B88A6B3A2F");
+            entity.HasKey(e => e.CustomerId).HasName("PK__Customer__A4AE64B88FE1D13D");
 
-            entity.HasIndex(e => e.Email, "UQ__Customer__A9D10534B9AA8D7E").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Customer__A9D105346C583422").IsUnique();
 
             entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
             entity.Property(e => e.CreatedAt)
@@ -57,7 +57,7 @@ public partial class EventifyContext : DbContext
 
         modelBuilder.Entity<Event>(entity =>
         {
-            entity.HasKey(e => e.EventId).HasName("PK__Events__7944C870C28D2424");
+            entity.HasKey(e => e.EventId).HasName("PK__Events__7944C870075488DF");
 
             entity.Property(e => e.EventId).HasColumnName("EventID");
             entity.Property(e => e.CreatedAt)
@@ -76,7 +76,7 @@ public partial class EventifyContext : DbContext
 
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BAF800DB7E8");
+            entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BAFAFF1FC82");
 
             entity.Property(e => e.OrderId).HasColumnName("OrderID");
             entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
@@ -93,7 +93,7 @@ public partial class EventifyContext : DbContext
 
         modelBuilder.Entity<OrderRow>(entity =>
         {
-            entity.HasKey(e => e.OrderRowId).HasName("PK__OrderRow__4D7AD202897460A1");
+            entity.HasKey(e => e.OrderRowId).HasName("PK__OrderRow__4D7AD20277A49DE1");
 
             entity.HasIndex(e => new { e.OrderId, e.TicketId }, "UQ_OrderRows_Order_Ticket").IsUnique();
 
@@ -115,7 +115,7 @@ public partial class EventifyContext : DbContext
 
         modelBuilder.Entity<Payment>(entity =>
         {
-            entity.HasKey(e => e.PaymentId).HasName("PK__Payments__9B556A5893E3A2BA");
+            entity.HasKey(e => e.PaymentId).HasName("PK__Payments__9B556A58D08E3250");
 
             entity.Property(e => e.PaymentId).HasColumnName("PaymentID");
             entity.Property(e => e.Amount).HasColumnType("decimal(10, 2)");
@@ -133,7 +133,7 @@ public partial class EventifyContext : DbContext
 
         modelBuilder.Entity<Ticket>(entity =>
         {
-            entity.HasKey(e => e.TicketId).HasName("PK__Tickets__712CC627AC5CC01B");
+            entity.HasKey(e => e.TicketId).HasName("PK__Tickets__712CC627EFB28C36");
 
             entity.HasIndex(e => new { e.EventId, e.SeatNumber }, "UQ_Tickets_Event_Seat").IsUnique();
 
@@ -149,9 +149,9 @@ public partial class EventifyContext : DbContext
 
         modelBuilder.Entity<Venue>(entity =>
         {
-            entity.HasKey(e => e.VenueId).HasName("PK__Venues__3C57E5D2895AB96E");
+            entity.HasKey(e => e.VenueId).HasName("PK__Venues__3C57E5D28BC8B4A7");
 
-            entity.HasIndex(e => e.Name, "UQ__Venues__737584F68395D63A").IsUnique();
+            entity.HasIndex(e => e.Name, "UQ__Venues__737584F69C167587").IsUnique();
 
             entity.Property(e => e.VenueId).HasColumnName("VenueID");
             entity.Property(e => e.City).HasMaxLength(50);
