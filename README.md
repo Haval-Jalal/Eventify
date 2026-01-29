@@ -42,25 +42,6 @@ Om du vill rensa databasen helt och börja om:
 
 ---
 
-## 🔧 Hur man scaffoldar Database First
-
-I Visual Studio:
-
-1. Öppna **Package Manager Console**
-2. Kör följande kommando:
-
-dotnet ef dbcontext scaffold "Server=DESKTOP-NUMA912\SQLEXPRESS;Database=Eventify;Trusted_Connection=True;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -o Models -f
-
-Detta genererar:
-- DbContext
-- Alla tabellklasser
-
-i mappen:
-
-/Models
-
----
-
 ## ▶ Hur man startar appen
 
 1. Öppna projektet i Visual Studio
